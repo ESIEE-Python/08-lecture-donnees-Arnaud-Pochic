@@ -1,6 +1,7 @@
 #### Imports et définition des variables globales
-import random
-
+"""
+Exercice réalisé par : Arnaud POCHIC
+"""
 FILENAME = "listes.csv"
 
 #### Fonctions secondaires
@@ -14,39 +15,109 @@ def read_data(filename):
     Returns:
         list: le contenu du fichier (1 list par ligne)
     """
-    l = []
+    with open(filename, mode='r', encoding='utf8') as f:
+        l=[]
+        s=f.readlines()
+        temp=[]
+        temp2=[]
+        for line in s:
+            temp=line.split(";")
+            temp2=[int(elt.strip()) for elt in temp]
+            l.append(temp2)
     return l
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """
+
+    retourne le kième indice de la liste de listes data
+
+     Args:
+        data (list), k (int)
+
+     Returns:
+        data[k]
+
+    """
+    return data[k]
 
 def get_first(l):
-    return None
+    """
+     retourne le premier élément de la liste l
+
+     Args:
+        list
+
+     Returns:
+        le premier élément de la liste
+
+     """
+    return l[0]
 
 def get_last(l):
-    return None
+    """
+     retourne le dernier élément de la liste
+
+     Args:
+        l (list)
+
+     Returns:
+        le dernier élément de la liste
+
+     """
+    return l[-1]
 
 def get_max(l):
-    return None
+    """
+     retourne le maximum de la liste
+
+     Args:
+        l (list)
+
+     Returns:
+        le maximum de la liste
+
+     """
+    return max(l)
+
 
 def get_min(l):
-    return None
+    """
+     retourne le minimum 
+
+     Args:
+        l (list)
+
+     Returns:
+        le minimum de la liste
+
+     """
+    return min(l)
 
 def get_sum(l):
-    return None
+    """
+     retourne la somme de cette liste
 
+     Args:
+        l (list)
+
+     Returns:
+        la somme de la liste
+
+     """
+    return sum(l)
 
 #### Fonction principale
 
 
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    """
+     fonction principale qui appelle et teste les fonctions secondaires
+    """
+    data = read_data(FILENAME)
+    for i, l in enumerate(data):
+        print(i, l)
+    k = 37
+    print(k, get_list_k(data, 37))
 
 
 if __name__ == "__main__":
